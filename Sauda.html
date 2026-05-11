@@ -533,6 +533,13 @@ section.appendix h3{margin-top:0}
 
 /* anchor offset under sticky topbar */
 [id^="del"],[id^="paragraf"]{scroll-margin-top:80px}
+/* STATUS-STRIP · per-seksjon kilde+status-stempel */
+.section-status{display:flex;align-items:center;gap:10px;margin:4px 0 22px 0;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;color:var(--ink-soft);text-transform:uppercase;line-height:1;flex-wrap:wrap;}
+.section-status .dot{width:7px;height:7px;border-radius:50%;background:#2D5A3D;flex-shrink:0;}
+.section-status[data-status="anslag"] .dot{background:#A33A1F;}
+.section-status .sep{opacity:0.42;letter-spacing:0;}
+.section-status time{font-variant-numeric:tabular-nums;letter-spacing:0.06em;}
+@media print{.section-status{color:#333;}.section-status .dot{background:#333 !important;}.section-status[data-status="anslag"] .dot{background:#000 !important;}}
 </style>
 <meta content="Partnermemo Sauda 2026 - cinematic investor memo med printbar DD og lokale Sauda-assets." name="description"/><meta content="Sauda Partnermemo locked content source" name="source-of-truth"/><meta content="sauda_cinematic_investor_build_v1 patched from release notes" name="working-file"/><meta content="All original body sections, tables, sources, risk text, assumptions, CTA and appendix retained in DOM" name="content-preservation"/><meta content="c0b2d26abb1887943908a66a373b2b6070c46cfd12e238be891e09ea7394f616" name="source-sha256"/><style>
 /* ─────────────────────────────────────────────────────────────
@@ -791,6 +798,7 @@ main{display:block}
 <section id="paragraf0">
 <div class="wrap">
 <div class="section-num">§0 · Sammendrag</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>Prosjektgruppen</span><span class="sep">·</span><time>April 2026</time></div>
 <h2 class="section-h">Ca. 500 regulerte enheter. <em>18 % billigere kvm enn Sirdal.</em> Gondol Q4 2027.</h2>
 <p class="lead">Kommunestyrevedtak 17. juni 2026. Gondol BT1 til 578 moh i drift Q4 2027. Første regulerte hyttepipeline med skala innenfor 2,5 timers kjøring fra Stavanger-regionen, der primær konkurrent Sirdal er nesten fullt utbygd med 4 820 hytter.</p>
 <p>Helårsverdiforslaget har ingen nær norsk parallell. Rogfast og gondolen forsterker hverandre. Sirdal er dyrt og mettet. Saudas utgangspunkt er unikt.</p>
@@ -992,6 +1000,7 @@ main{display:block}
 <section class="tight" id="paragraf11" style="padding-top:32px">
 <div class="wrap">
 <div class="section-num">§1.1 · Gondol BT1</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>Leitner intensjonsavtale + Sparebankstiftelsen-søknad</span><span class="sep">·</span><time>April 2024–2026</time></div>
 <h3 style="margin-top:0">Fra Kro (357 moh) til Djuvsbotn (578 moh). Elektrisk. I drift Q4 2027.</h3>
 <p>Gondolen bygges i to trinn. BT1 er investeringen og grunnlaget for hytteutviklingen. BT2 er en opsjon. Krever myndighetsgodkjenning.</p>
 <div class="table-wrap">
@@ -1036,6 +1045,7 @@ main{display:block}
 <section class="tight" id="paragraf12new">
 <div class="wrap">
 <div class="section-num">§1.2 · Prisgap · hovedbevis for tesen</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>SSB Fritidsbolig + Eiendom Norge + Aktiv Eiendomsmegling</span><span class="sep">·</span><time>2023–2025</time></div>
 <h3 style="margin-top:0">Sauda er ikke billig fordi den er dårlig. Sauda er billig fordi den ikke er kjent.</h3>
 <p>Det er industri-Sauda mot destinasjons-peers. Differansen er feilprisingen.</p>
 <h4>Prisgap mot peers · totalpris</h4>
@@ -1110,6 +1120,7 @@ main{display:block}
 <section class="tight" id="paragraf12">
 <div class="wrap">
 <div class="section-num">§1.3 · Svandal · Ca. 500 nye enheter</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>HRP Planskildring</span><span class="sep">·</span><time>07.08.2025</time></div>
 <h3 style="margin-top:0">Markedet er ikke mettet. Det er uutviklet. Sauda solgte fire nybygg i 2023.</h3>
 <p>Gondolen treffer 324 eksisterende hytter direkte.</p>
 <div class="table-wrap">
@@ -1140,6 +1151,7 @@ main{display:block}
 <section class="tight" id="paragraf13">
 <div class="wrap">
 <div class="section-num">§1.4 · Rogaland-markedet</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>SSB + Eiendom Norge</span><span class="sep">·</span><time>2023–2025</time></div>
 <h3 style="margin-top:0">79 000 ansatte i olje og gass. 4 820 hytter i Sirdal. Regnestykket går ikke opp.</h3>
 <p>Rogaland er Norges nest rikeste region med 508 922 innbyggere (SSB 1.1.2026) og befolkningsframskriving mot 543 550 i 2050. 79 000 av de sysselsatte jobber i olje og gass. Likevel har regionen bare én etablert fjellhyttedestinasjon: Sirdal. Og Sirdal er nesten fullt utbygd.</p>
 <div class="table-wrap">
@@ -1173,6 +1185,7 @@ main{display:block}
 <section class="tight" id="paragraf14">
 <div class="wrap">
 <div class="section-num">§1.5 · By og helår</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>SSB + offentlige tall</span><span class="sep">·</span><time>2024</time></div>
 <h3 style="margin-top:0">Sauda er allerede helårsdestinasjon. Gondolen gjør det åpenbart for kjøperne.</h3>
 <p>4 603 innbyggere. Alle tjenester: kino (68 seter, 2023), 32 °C utebasseng varmet av spillvarme fra Eramet, legevakt, kulturhus, bibliotek, to hoteller, campingplass med båthavn, klatrehall, golfbane, pumptrack, bike park (2025), 70+ frivillige lag.</p>
 <div class="callout">Eramet varmer 32 °C-bassenget med spillvarme. Det er hva 111 år med industri gir en hyttekjøper i 2026.</div>
@@ -1703,6 +1716,7 @@ main{display:block}
 <section class="tight" id="paragraf16">
 <div class="wrap">
 <div class="section-num">§1.6 · Strukturelle fortrinn</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>Meteorologisk institutt normalperiode</span><span class="sep">·</span><time>1991–2020</time></div>
 <h3 style="margin-top:0">Det Sauda har, kan ingen kopiere. Det Sirdal har, kan alle bygge.</h3>
 <p>Sauda ligger innerst i fjorden, skjermet av fjell på alle kanter. Gjennomsnittsvind 0,7 m/s (Meteorologisk institutt, normalperiode 1991 til 2020). Vind stenger heisene svært sjelden, i motsetning til eksponerte alpinanlegg.</p>
 <div class="table-wrap">
@@ -1737,6 +1751,7 @@ main{display:block}
 <section class="tight" id="paragraf17">
 <div class="wrap">
 <div class="section-num">§1.7 · Konkurransebilde og prisgap-dekomponering</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>Egen analyse + Aktiv Eiendomsmegling</span><span class="sep">·</span><time>April 2026</time></div>
 <h3 style="margin-top:0">Sirdal er bedre for familiecruising. Sauda er bedre på avansert frikjøring, snøkvalitet og alt annet. Gondolen lukker mildværsgapet i nederste skiterreng.</h3>
 <p>Sirdal har snøgaranti gjennom høyde og kanonpark. Røldal og Vågslid har den. BT1 reduserer mildværsrisiko i Sauda fra 2027. BT2 leverer ekte snøgaranti fra 2030.</p>
 <div class="table-wrap">
@@ -1817,6 +1832,7 @@ main{display:block}
 <section class="tight" id="paragraf21" style="padding-top:32px">
 <div class="wrap">
 <div class="section-num">§2.1 · Gondoler som løftet destinasjoner</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>SkiStar årsrapport + offentlige kilder</span><span class="sep">·</span><time>Referansecase</time></div>
 <h3 style="margin-top:0">Myrkdalen: fra 15 000 til 79 400 kr/kvm (premium-leilighet) på 22 år. Median-hytter ~40 000 kr/kvm i dag. Hafjell: gondolen ga betydelig verdistigning på hyttemassen.</h3>
 <div class="table-wrap">
 <table data-criticality="standard">
@@ -1864,6 +1880,7 @@ main{display:block}
 <section class="tight" id="paragraf22">
 <div class="wrap">
 <div class="section-num">§2.2 · Hva kjøpere egentlig vektlegger</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>SP17 n=76, indikativ</span><span class="sep">·</span><time>2024</time></div>
 <h3 style="margin-top:0">17 % vil ha snø. 72 % vil ha helårsbruk. Gondolen leverer det viktigste.</h3>
 <p>Blant dem som vurderte å kjøpe hytte i Sauda, rangerte 72 % helårsbruk som viktigste faktor, 48 % ro og fredelig, 38 % aktiviteter for barn, 31 % nærhet til butikker og kafeer, og bare 17 % god snø og skisenter. <strong>17 % er nøkkeltallet</strong>: Sauda trenger ikke slå Sirdal på ski.</p>
 <div class="compare">
@@ -1921,6 +1938,7 @@ main{display:block}
 <section class="tight" id="paragraf31" style="padding-top:32px">
 <div class="wrap">
 <div class="section-num">§3.1 · Tre faser</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>Prosjektgruppen</span><span class="sep">·</span><time>April 2026</time></div>
 <h3 style="margin-top:0">Vi går videre til neste fase når markedet bekrefter, ikke etter plan.</h3>
 <div class="table-wrap">
 <table data-criticality="standard">
@@ -1938,6 +1956,7 @@ main{display:block}
 <section class="tight" id="paragraf32">
 <div class="wrap">
 <div class="section-num">§3.2 · BT2 · opsjon, ikke risiko</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>Prosjektgruppen + Statsforvalter-vurdering</span><span class="sep">·</span><time>April 2026</time></div>
 <h3 style="margin-top:0">Du investerer ikke i BT2 nå. BT2 er en mulighet, finansiert av verdiene BT1 skaper.</h3>
 <div class="table-wrap">
 <table data-criticality="high">
@@ -1968,6 +1987,7 @@ main{display:block}
 <section class="tight" id="paragraf33">
 <div class="wrap">
 <div class="section-num">§3.3 · Fremdriftsplan</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>Prosjektgruppen</span><span class="sep">·</span><time>April 2026</time></div>
 <h3 style="margin-top:0">Fra vedtak i juni 2026 til gondol åpen Q4 2027.</h3>
 <div class="table-wrap">
 <table data-criticality="high">
@@ -1992,6 +2012,7 @@ main{display:block}
 <section class="tight" id="paragraf34">
 <div class="wrap">
 <div class="section-num">§3.4 · Organisasjon og drift</div>
+<div class="section-status" data-status="anslag"><span class="dot"></span><span>Anslag</span><span class="sep">·</span><span>Prosjektgruppen</span><span class="sep">·</span><time>April 2026</time></div>
 <h3 style="margin-top:0">Loen-modellen for eierstruktur. Voss som motreferanse på kapitalstruktur. Folk som har bygget Sauda før, bygger Sauda nå.</h3>
 <p>Eiermodellen skiller eierskap fra drift. Partneren bærer ikke driftsrisikoen ved skisenteret.</p>
 <div class="table-wrap">
@@ -2018,6 +2039,7 @@ main{display:block}
 <section class="tight" id="paragraf35">
 <div class="wrap">
 <div class="section-num">§3.5 · Dokumentets avgrensning</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>Prosjektgruppen</span><span class="sep">·</span><time>April 2026</time></div>
 <p>Dokumentet inneholder ikke finansiell modell og beregner ikke IRR, NPV eller tilsvarende avkastningsmål. Kostnads- og prisestimater fra prosjektgruppen og D-S Bygg er ikke uavhengig validert. Byggekostnad, salgspris, infrastrukturestimater og driftsprognoser er ikke verifisert. Prosjektgruppen leverer og eier alle underlagstall og estimater.</p>
 </div>
 </section>
@@ -2025,6 +2047,7 @@ main{display:block}
 <section class="tight" id="paragraf36">
 <div class="wrap">
 <div class="section-num">§3.6 · Forutsetninger og forbehold</div>
+<div class="section-status" data-status="bekreftet"><span class="dot"></span><span>Bekreftet</span><span class="sep">·</span><span>Prosjektgruppen</span><span class="sep">·</span><time>April 2026</time></div>
 <h3 style="margin-top:0">Fire materielle forutsetninger bærer hele caset.</h3>
 <p>Byggekostnad og salgspris (D-S Bygg, ikke uavhengig validert). Salgstakt 15/år (4x historisk). BT2-godkjenning (Statsforvalter-innsigelse, BT1 bærer alene). Snø og klima (357 moh sårbart, BT1 lukker mildværsgapet i nederste terreng, BT2 leverer ekte snøgaranti). Konsolidert oversikt med kalibreringspunkter i Appendix F.</p>
 </div>
