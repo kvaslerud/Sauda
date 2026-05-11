@@ -533,6 +533,32 @@ section.appendix h3{margin-top:0}
 
 /* anchor offset under sticky topbar */
 [id^="del"],[id^="paragraf"]{scroll-margin-top:80px}
+/* SOURCE-BLOKK MARGINALIA · kilder i høyremarg på ≥1280px */
+@media (min-width:1280px){
+  section.tight > .wrap{position:relative;}
+  section.tight > .wrap > .sources{
+    position:absolute;top:0;right:32px;
+    width:240px;max-width:240px;
+    margin:0;padding:14px 0 14px 18px;
+    border-top:none;
+    border-left:0.5px solid var(--hair-strong);
+    background:transparent;
+    font-size:11px;line-height:1.55;
+  }
+  section.tight > .wrap > .sources strong{
+    display:block;
+    font-family:var(--mono);font-size:10px;
+    letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:6px;
+  }
+  section.tight > .wrap > h3,
+  section.tight > .wrap > h4,
+  section.tight > .wrap > p,
+  section.tight > .wrap > .callout,
+  section.tight > .wrap > .nb{padding-right:288px;}
+  section.tight > .wrap > .table-wrap{padding-right:0;}
+}
+@media print{section.tight > .wrap > .sources{position:static !important;width:auto !important;border-left:none !important;border-top:0.5px solid #333 !important;padding:14px 0 0 0 !important;}section.tight > .wrap > *{padding-right:0 !important;}}
 </style>
 <meta content="Partnermemo Sauda 2026 - cinematic investor memo med printbar DD og lokale Sauda-assets." name="description"/><meta content="Sauda Partnermemo locked content source" name="source-of-truth"/><meta content="sauda_cinematic_investor_build_v1 patched from release notes" name="working-file"/><meta content="All original body sections, tables, sources, risk text, assumptions, CTA and appendix retained in DOM" name="content-preservation"/><meta content="c0b2d26abb1887943908a66a373b2b6070c46cfd12e238be891e09ea7394f616" name="source-sha256"/><style>
 /* ─────────────────────────────────────────────────────────────
