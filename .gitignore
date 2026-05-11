@@ -1,0 +1,6 @@
+# Generated artifacts (deliverables, not source)
+*.patch
+
+# QA tooling scratch (if ever run in repo dir)
+qa-output/
+node_modules/
