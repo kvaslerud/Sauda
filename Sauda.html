@@ -533,6 +533,12 @@ section.appendix h3{margin-top:0}
 
 /* anchor offset under sticky topbar */
 [id^="del"],[id^="paragraf"]{scroll-margin-top:80px}
+/* GONDOLEFFEKT-ANKER · sidebar-claim som ankre nøkkeltall i §1.2 */
+.anchor{margin:28px 0;padding:18px 22px;background:var(--copper-pale);border-left:3px solid var(--copper);max-width:620px;}
+.anchor-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--copper);margin-bottom:8px;}
+.anchor-claim{font-family:var(--display);font-size:clamp(20px,2.2vw,24px);line-height:1.35;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;}
+.anchor-source{font-family:var(--mono);font-size:11px;line-height:1.55;color:var(--ink-soft);margin-top:10px;}
+@media print{.anchor{break-inside:avoid;background:#f5f5f5;border-left-color:#333;}.anchor-label{color:#333;}}
 </style>
 <meta content="Partnermemo Sauda 2026 - cinematic investor memo med printbar DD og lokale Sauda-assets." name="description"/><meta content="Sauda Partnermemo locked content source" name="source-of-truth"/><meta content="sauda_cinematic_investor_build_v1 patched from release notes" name="working-file"/><meta content="All original body sections, tables, sources, risk text, assumptions, CTA and appendix retained in DOM" name="content-preservation"/><meta content="c0b2d26abb1887943908a66a373b2b6070c46cfd12e238be891e09ea7394f616" name="source-sha256"/><style>
 /* ─────────────────────────────────────────────────────────────
@@ -1038,6 +1044,11 @@ main{display:block}
 <div class="section-num">§1.2 · Prisgap · hovedbevis for tesen</div>
 <h3 style="margin-top:0">Sauda er ikke billig fordi den er dårlig. Sauda er billig fordi den ikke er kjent.</h3>
 <p>Det er industri-Sauda mot destinasjons-peers. Differansen er feilprisingen.</p>
+<aside class="anchor">
+<div class="anchor-label">Gondoleffekt · BT1 alene</div>
+<div class="anchor-claim">+7 til 11 % nybyggspris kr/kvm.</div>
+<div class="anchor-source">Aktiv Eiendomsmegling 2024. Full dekomponering nedenfor.</div>
+</aside>
 <h4>Prisgap mot peers · totalpris</h4>
 <div class="table-wrap">
 <table data-criticality="high">
