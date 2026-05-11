@@ -533,6 +533,15 @@ section.appendix h3{margin-top:0}
 
 /* anchor offset under sticky topbar */
 [id^="del"],[id^="paragraf"]{scroll-margin-top:80px}
+/* LIFT-SPEC-RIBBON · gondol-spec under §1.1 section-num */
+.lift-spec{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:28px 0;padding:18px 0;border-top:0.5px solid var(--hair-strong);border-bottom:0.5px solid var(--hair-strong);}
+.lift-spec > div{padding:0 22px;border-left:0.5px solid var(--hair);}
+.lift-spec > div:first-child{border-left:none;padding-left:0;}
+.lift-spec > div:last-child{padding-right:0;}
+.lift-spec dt{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 6px 0;}
+.lift-spec dd{margin:0;font-family:var(--display);font-size:clamp(18px,2vw,22px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;}
+@media(max-width:860px){.lift-spec{grid-template-columns:repeat(2,1fr);}.lift-spec > div{padding:12px 16px;border-left:none;border-top:0.5px solid var(--hair);}.lift-spec > div:nth-child(-n+2){border-top:none;}.lift-spec > div:last-child{grid-column:1 / -1;}}
+@media print{.lift-spec{break-inside:avoid;border-color:#333;}}
 </style>
 <meta content="Partnermemo Sauda 2026 - cinematic investor memo med printbar DD og lokale Sauda-assets." name="description"/><meta content="Sauda Partnermemo locked content source" name="source-of-truth"/><meta content="sauda_cinematic_investor_build_v1 patched from release notes" name="working-file"/><meta content="All original body sections, tables, sources, risk text, assumptions, CTA and appendix retained in DOM" name="content-preservation"/><meta content="c0b2d26abb1887943908a66a373b2b6070c46cfd12e238be891e09ea7394f616" name="source-sha256"/><style>
 /* ─────────────────────────────────────────────────────────────
@@ -993,6 +1002,13 @@ main{display:block}
 <div class="wrap">
 <div class="section-num">§1.1 · Gondol BT1</div>
 <h3 style="margin-top:0">Fra Kro (357 moh) til Djuvsbotn (578 moh). Elektrisk. I drift Q4 2027.</h3>
+<dl class="lift-spec">
+<div><dt>Vertikal</dt><dd>221 m</dd></div>
+<div><dt>Strekning</dt><dd>Kro → Djuvsbotn</dd></div>
+<div><dt>Kapital</dt><dd>~60 MNOK</dd></div>
+<div><dt>Operatør</dt><dd>Folkeheisen</dd></div>
+<div><dt>Driftsstart</dt><dd>Q4 2027</dd></div>
+</dl>
 <p>Gondolen bygges i to trinn. BT1 er investeringen og grunnlaget for hytteutviklingen. BT2 er en opsjon. Krever myndighetsgodkjenning.</p>
 <div class="table-wrap">
 <table data-criticality="high">
