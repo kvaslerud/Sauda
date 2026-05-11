@@ -1,25 +1,33 @@
 # QA-REPORT — Sauda.html (pre-send review)
 
 Branch: `claude/pre-send-review-zbFgK`
-Kjøretidspunkt: 2026-05-11
+Kjøretidspunkt (siste runde): 2026-05-11 (etter rensingoppgave)
 Filer:
-- Kilde: `Sauda.html` (2 884 385 byte, 2580 linjer)
-- Output: `qa-output/` (ikke versjonert; lokal sandbox)
+- Kilde: `Sauda.html` (2 858 368 byte, 2310 linjer)
+  - SHA-256: `20f10c321a4901cedff3e487bb215e464a6f5278f1e7c2fe6e4dc23921cfe8e7`
+- Output: `qa-output/` (ikke versjonert; lokal sandbox `/tmp/sauda-work/qa-output/`)
 
 ## Sammendrag
 
-| Verktøy | Før fix | Etter fix | Måltall |
-|---|---|---|---|
-| Lighthouse Performance | 54/100 | 54/100 | 95+ — **ikke nådd** |
-| Lighthouse Accessibility | 95/100 | **96/100** | 95+ ✓ |
-| Lighthouse Best Practices | 96/100 | **96/100** | 95+ ✓ |
-| Lighthouse SEO | 100/100 | **100/100** | 95+ ✓ |
-| axe-core violations | 5 (264 noder) | **1 (177 noder)** | 0 |
-| html-validate errors | 21 | **0** | 0 |
-| Brutte interne lenker | 0 | 0 | 0 |
-| Modal lukker (ESC + utenfor-klikk) | ✓ ✓ | ✓ ✓ | ✓ |
-| Pin-overlapp 375 px | 18 par | **8 par** | 0 — **ikke nådd** |
-| Print-PDF genereres | ✓ | ✓ | ✓ |
+| Verktøy | Før fix | Etter A-fix | **Etter rensing (v2)** | Måltall |
+|---|---|---|---|---|
+| Lighthouse Performance (desktop) | 54/100 | 54/100 | **55/100** | 95+ — **ikke nådd** (designvalg, se C4) |
+| Lighthouse Performance (mobile) | — | — | **55/100** | 95+ — **ikke nådd** |
+| Lighthouse Accessibility | 95/100 | 96/100 | **96/100** | 95+ ✓ |
+| Lighthouse Best Practices | 96/100 | 96/100 | **96/100** | 95+ ✓ |
+| Lighthouse SEO | 100/100 | 100/100 | **100/100** | 95+ ✓ |
+| axe-core violations | 5 (264 noder) | 1 (177 noder) | **1 violation / 1 incomplete** | 0 (designvalg, C3) |
+| axe-core passes | — | 50 | **47** | maks |
+| html-validate errors | 21 | 0 | **0** | 0 ✓ |
+| Brutte interne lenker | 0 | 0 | **0 (22 hrefs/16 unike)** | 0 ✓ |
+| Brutte aria-labelledby | 0 | 0 | **0 (6 refs)** | 0 ✓ |
+| Modal ESC + utenfor-klikk | ✓ ✓ | ✓ ✓ | **✓ ✓ (gjenåpnes)** | ✓ ✓ ✓ |
+| Pin-overlapp 375 px | 18 par | 8 par | **8 par** | 0 (uendret av rensing) |
+| Print-PDF genereres | ✓ | ✓ | **✓ (740 KB)** | ✓ |
+| Console errors (Playwright) | — | — | **0** | 0 ✓ |
+| Page errors (Playwright) | — | — | **0** | 0 ✓ |
+
+**Ingen regresjon** observert i rensingoppgave-runden. Lighthouse-scorer er stabile eller marginalt bedre. Forbedringen i a11y-passes (50 → 47) er kun fordi totalt antall elementer som kontrolleres har gått ned etter sletting av DEL 3+4 (færre seksjoner = færre individuelle a11y-sjekker).
 
 ## 1. Lighthouse
 
@@ -162,3 +170,39 @@ CHROME_PATH=$(find /opt/pw-browsers -name chrome -path "*chrome-linux*" | head -
 ```
 
 `run-playwright.mjs` ligger i sandbox; ikke versjonert i repo (kjøre-script, ikke leveranseartefakt).
+
+---
+
+## 7. Rensingoppgave-runde 2026-05-11 — eksplisitt regresjons-sjekk
+
+Rensingoppgaven gjorde 5 commits med significant strukturell endring (DEL 3 + DEL 4 fjernet, 251 linjer slettet, paragraf-IDer renummerert, body-text scrub). Følgende ble eksplisitt re-verifisert:
+
+| Sjekk | Forventet | Faktisk |
+|---|---|---|
+| html-validate | 0 errors | **0 errors** ✓ |
+| axe-core (samme runOnly-config) | ≤1 violation | **1 violation (uendret)** ✓ |
+| Internal hrefs broken | 0 | **0 av 22** ✓ |
+| aria-labelledby broken | 0 | **0 av 6** ✓ |
+| Console errors @ 4 viewports | 0 | **0** ✓ |
+| Page errors (uncaught throws) | 0 | **0** ✓ |
+| Modal ESC + outside-click + reopen | alle ✓ | **alle ✓** ✓ |
+| Print-PDF | genereres uten advarsler | **757 KB OK** ✓ |
+| §-text orphans (§3.x/§4.x i body som ikke matcher ny §-struktur) | 0 | **0 (alle scrubbet)** ✓ |
+| v75-v79 i body | 0 | **0** ✓ |
+| BDO/Tobias/Mørland/Kvaslerud | 0 | **0** ✓ |
+| 365 m / 365 moh i hele DOM | 0 | **0** (verifisert ift A3) ✓ |
+
+**Konklusjon:** Rensingoppgaven introduserte ingen regresjon i automatiserte sjekker. Pre-eksisterende C-list-funn (color-contrast, pin-overlap, performance) er uendret som forventet.
+
+### Visuell verifikasjon (manuell — krever menneskelig vurdering)
+
+Skjermbilder generert i `/tmp/sauda-work/qa-output/screenshots/`:
+- 4 viewports × 2 (full + fold) = 8 PNG-er
+- Pluss en kart-skjermbilde @ 375 px
+
+Disse må gjennomgås manuelt for:
+- (a) Layout etter DEL 5 → DEL 3 renummerering ser konsistent ut
+- (b) Single cta-block etter BDO-sletting flyter riktig på desktop og mobil
+- (c) Topbar uten "Salgstakt" og "Risiko" chips ser balansert ut
+- (d) Proof-grid med 4 kort (vs tidligere 6) layouter pent på alle bredder
+- (e) Agenda-grid med 9 kort (vs 10) ikke har orphan-rad eller hull

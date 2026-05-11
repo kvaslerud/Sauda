@@ -1,6 +1,7 @@
 # CONCERNS — Sauda.html (pre-send review)
 
 Branch: `claude/pre-send-review-zbFgK`
+Sist oppdatert: 2026-05-11 (etter rensingoppgave)
 
 Alt under er funn som krever **din beslutning**. Jeg har ikke endret dem. Jeg har gått gjennom dokumentet som motpartens advokat. Det betyr at noen punkter er språklig pirk og noen er reelle faktakonflikter — jeg har markert hvert med kategori og kritikalitet.
 
@@ -8,6 +9,34 @@ Forkortelser:
 - **A** = adresseres før utsending. Reell motstrid eller risiko for blowback i due diligence.
 - **B** = bør avklares, men kan i prinsippet gå i print.
 - **C** = svakhet jeg vil flagget, men du kan velge å la stå.
+
+Status-markører:
+- ✅ ADRESSERT — fikset i commit, kan strykes etter siste verifisering
+- ⚠ FORTSATT ÅPEN — krever beslutning fra deg
+- 🔵 NY (rensing) — tillagt etter rensingoppgave 2026-05-11
+
+---
+
+## Statussammendrag etter rensingoppgave
+
+| Kategori | Status | Kommentar |
+|---|---|---|
+| A1 · Skisenter bunn 320 vs 357 | ✅ Adressert | Disambiguity i §1.7 (commit `0924b3b`) |
+| A2 · Skisenter topp 822 vs 850 | ✅ Adressert | Disambiguity i §1.7 (commit `0924b3b`) |
+| A3 · Djuvsbotn 365 → 221 m | ✅ Adressert | Erstattet i alle materialiseringer (commit `0924b3b`); verifisert i rensingoppgave |
+| A4 · Statsforvalter Vestland → Rogaland | ✅ Adressert | §5.2-kilder fikset (commit `45df82b`) |
+| A5 · Appendix D søkt-sum | ✅ Adressert | Sum normalisert (commit `53ddd7a`) |
+| A6 · Portal Norge n=1144 rest | ✅ Adressert | Femte gruppe markert (commit `53ddd7a`) |
+| A7 · Skisenter heisetelling | ✅ Adressert | Disambiguity (commit `53ddd7a`) |
+| B1–B7 · Påstander uten kilde | ⚠ Åpen | Krever beslutning |
+| C1 · Topbar dato | ✅ Adressert | Endret til "Partnermemo · April 2026" (commit `84a4464`) |
+| C2 · Pin-overlapp | ⚠ Åpen | 8 par fortsatt; uendret av rensing |
+| C3 · Color-contrast | ⚠ Åpen | 177 noder fortsatt; uendret av rensing |
+| C4 · Performance | ⚠ Åpen | 55/100 fortsatt; designvalg |
+| C5–C8 · Språklig pirk | ⚠ Åpen | Du eier stemmen |
+| C9 · Faglig drøfting-kontakt mangler | 🔵 NY | BDO-blokk slettet; ingen erstatning satt inn |
+| C10 · DD-control-seksjon er meta | 🔵 NY | Hele seksjonen er notater til redaktør |
+| C11 · Working-file build-ID | 🔵 NY | Meta-tag beholder `sauda_cinematic_investor_build_v1` |
 
 ---
 
@@ -194,6 +223,53 @@ Anbefaler (a) gitt at leveransekanalen er én fil og ikke web hosting.
 
 Ord som "naturlig overlegen" er rødt klut for skeptisk leser. Vurder "naturlig fortrinn" eller "topografisk fordel".
 
+### C9 · 🔵 NY · "Faglig drøfting og finansiell modell"-kontakt mangler
+
+Etter slettingen av BDO/Tobias M. Kvaslerud-blokken (commit `c851867`) står CTA-grid igjen med kun én kontakt (Endre Abotnes / Sauda Vekst AS).
+
+Per oppdrag: "Hvis kontaktboks blir tom: flagg i CONCERNS.md, ikke tett med plassholder."
+
+Hele cta-blokken for "Faglig drøfting og finansiell modell" ble fjernet (label + name + role + contact-tag), ikke bare bdo-strengene, fordi tom blokk med kun label hadde gitt visuelt brutt UI.
+
+**Beslutning du må ta:**
+- (a) Bekreft at "Faglig drøfting"-rollen er bevisst utelatt for denne utsendelsen.
+- (b) Sett inn ny kontakt (navn, rolle, organisasjon) i `<div class="cta-block">` på linje 2249.
+- (c) Behold kun Endre Abotnes som eneste kontaktpunkt og oppgi at faglig dialog går via prosjektgruppen.
+
+CSS: `.cta-grid` bruker 2-kolonne grid på desktop og 1-kolonne under 860px. Med kun én blokk vil den fylle venstre kolonne på desktop og venstre være tom; vurder å justere til `grid-template-columns:1fr` eller å sentrere den ene blokken.
+
+### C10 · 🔵 NY · DD-control / "Kildekomplett rapport"-seksjonen er meta-content
+
+Linje 2031–2049, hele `<section id="dd-mode" class="deal-room-layer dark">` med tittel "Kildekomplett rapport før appendix" og tabell over hva som er bevart fra original.
+
+Dette er en **kontroll-rapport for redaktør**, ikke leser-relevant innhold:
+- "Original fulltekst, tabeller, kilder, risiko, forbehold, CTA og appendix finnes i DOM." (lede)
+- Tabell-rader: "Partnermemo fulltekst · Bevart · Alle 34 originalseksjoner...", "Originaltabeller · 41/41", "Kilder og forbehold · Bevart · 21 kildeblokker", "Video · Ikke brukt".
+
+Rensingoppgaven scrubbet "release-notes-mangelen fra v1 er lukket"-formuleringen, men hele seksjonen er fortsatt meta-notater. Den serverer ingen funksjon for partner-leser; den bekrefter overfor deg at dokumentet er komplett.
+
+**Beslutning:** Slett hele `<section id="dd-mode">` (linje 2031–2049) i neste runde, eller bekreft at den skal stå som "redaktørs kvalitetsstempel" overfor partner.
+
+### C11 · 🔵 NY · Working-file build-ID i meta
+
+Linje 537 har fortsatt:
+
+```html
+<meta content="sauda_cinematic_investor_build_v1 patched from release notes" name="working-file"/>
+```
+
+Dette er en intern build-identifikator, ikke en versjon i v75-v79-mønsteret. Ble derfor ikke skrubbet av rensingoppgaven (cat 5 spesifiserte v75-v79).
+
+**Vurdering:** Meta-tags er ikke synlige for leser, men de leses av crawlers og kan eksponere intern build-historikk hvis dokumentet noen gang havner offentlig. Lett endring: erstatt med `Sauda Partnermemo April 2026` eller fjern meta-tag-en helt.
+
+### C12 · 🔵 NY · Kicker "Deal dashboard · kildebevart" (linje 722)
+
+Etter at h2 ble endret fra meta-kommentar til "Deal dashboard", har kicker fortsatt teksten "Deal dashboard · kildebevart". Ordet "kildebevart" er en redaktør-kommentar (om at innholdet er bevart fra Partnermemo-source) og ikke leser-relevant.
+
+Bevisst beholdt i rensingoppgaven fordi det ikke matchet de eksplisitte søkeordene (originalinnholdet, JS, DOM-krav, scrollytelling, no-JS, PDF-fallback). Flagges her for vurdering.
+
+**Beslutning:** Endre "Deal dashboard · kildebevart" → "Deal dashboard" eller la stå.
+
 ---
 
 ## Ikke-funn (du kan slappe av på disse)
@@ -223,3 +299,56 @@ Disse var entydige feil og er fikset:
 3. Statsforvalteren for BT2 (§5.2-kilder): "Vestland" → "Rogaland" (Sauda er i Rogaland).
 4. Stavefeil "fjelllandskap" → "fjellandskap" (2 steder, kart-tekst og JS-data).
 5. HTML/a11y-fikser (sjekklisten i QA-REPORT.md). Ingen tekstendring.
+
+---
+
+## Rensingoppgave 2026-05-11 (commit `28808c2..84a4464`) — endringslogg
+
+Seks commits utført på branch `claude/pre-send-review-zbFgK`:
+
+### Commit 1 · `28808c2` · Metakommentarer
+- 6 meta-strenger fjernet (3 `<h2>` + 3 lede-`<p>` + 1 kicker)
+- Berørte seksjoner: deal-dashboard, deal-proof, smap-location-ledger
+- aria-labelledby IDer bevart for a11y
+
+### Commit 2 · `2a7846b` · Header
+- Kicker "Proof cards · med evidence drawers" slettet
+- h2 #deal-proof-title: "Bevisene står i originalteksten..." → "Oppsummering"
+
+### Commit 3 · `418e940` · DEL 3 + DEL 4 fjernet
+- 251 linjer slettet (paragraf32, 32b, 33, 34, 41 + portaler + §4.2-comment)
+- DEL 5 → DEL 3 (visible label + id)
+- paragraf51..56 → paragraf31..36 (IDer + section-num + comments + href)
+- Body-text scrub av stale §3.x og §4.1 refs (8 steder)
+- Topbar nav: 'Salgstakt' og 'Risiko' chips slettet
+- Agenda-card: '§3.2b Salgstakt' fjernet
+- Proof-cards: '15/år' og '15 risikoer underwrites' fjernet (orphaned)
+- Status-tabell: rad om §4.1 risikomatrise fjernet
+- §5.x text refs → §3.x (hero, deal-cards, proof-cards, kicker, status)
+- 22 internal hrefs / 0 broken; 6 aria-labelledby / 0 broken
+
+### Commit 4 · `c851867` · BDO + Tobias
+- Hele cta-blokk #2 slettet (label + name + role + contact)
+- 0 gjenstående treff på BDO/Tobias/Mørland/Kvaslerud
+- → C9 åpen
+
+### Commit 5 · `84a4464` · Versjonsnummer
+- v75-v79 og 'Partnermemo vXX' fjernet overalt (12 forekomster)
+- Meta-tags: description, source-of-truth, content-preservation
+- Topbar "v79 · April 2026" → "Partnermemo · April 2026"
+- Footer "Svandal 2026 · Partnermemo v79" → "Svandal 2026 · Partnermemo"
+- Watermark "Konfidensielt · v79" → "Konfidensielt"
+- 6 HTML change-log-kommentarer slettet (interne notater om §-flyttinger)
+- DD-control lede: "release-notes-mangelen fra v1 er lukket" scrubbed
+- → C11 (working-file build-ID) åpen
+
+### Commit 6 · A3-verifikasjon (no-op)
+- Sweep bekrefter 0 treff på "365 m" / "365 moh" i hele dokumentet
+- DD-tabell + JS data + height profile + alle proof-cards bruker korrekt 221 m
+- Ingen endringer nødvendig (allerede løst i commit `0924b3b`)
+- Ingen tom commit opprettet
+
+### Sumtall etter rensingoppgave
+- Sauda.html: 2588 → 2310 linjer (−278), 2 884 459 → 2 858 368 byte (−26 KB)
+- 9 commits totalt på branch siden main
+- 3 patches: a-fixes.patch (commit 1+2 av A), pre-send-review-full.patch (alt før rensing), pre-send-review-full.patch v2 (alt inkl. rensing)
