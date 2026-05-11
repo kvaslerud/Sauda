@@ -533,6 +533,17 @@ section.appendix h3{margin-top:0}
 
 /* anchor offset under sticky topbar */
 [id^="del"],[id^="paragraf"]{scroll-margin-top:80px}
+/* OVERSIGHT BAR · myndighetspunkter over CTA */
+.oversight-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:48px 0 0 0;padding:22px 0;border-top:1px solid var(--hair-strong);border-bottom:1px solid var(--hair-strong);}
+.oversight-item{padding:0 28px;border-left:0.5px solid var(--hair);display:flex;flex-direction:column;gap:6px;}
+.oversight-item:first-child{border-left:none;padding-left:0;}
+.oversight-item:last-child{padding-right:0;}
+.oversight-item .dot{width:8px;height:8px;border-radius:50%;background:#2D5A3D;margin-bottom:4px;}
+.oversight-item[data-status="anslag"] .dot{background:#A33A1F;}
+.oversight-item .label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);}
+.oversight-item .value{font-family:var(--body);font-size:14px;line-height:1.45;color:var(--ink);}
+@media (max-width:860px){.oversight-bar{grid-template-columns:1fr;}.oversight-item{padding:14px 0;border-left:none;border-top:0.5px solid var(--hair);}.oversight-item:first-child{border-top:none;padding-top:0;}}
+@media print{.oversight-bar{break-inside:avoid;border-color:#333;}.oversight-item .dot{background:#333 !important;}.oversight-item[data-status="anslag"] .dot{background:#000 !important;}}
 </style>
 <meta content="Partnermemo Sauda 2026 - cinematic investor memo med printbar DD og lokale Sauda-assets." name="description"/><meta content="Sauda Partnermemo locked content source" name="source-of-truth"/><meta content="sauda_cinematic_investor_build_v1 patched from release notes" name="working-file"/><meta content="All original body sections, tables, sources, risk text, assumptions, CTA and appendix retained in DOM" name="content-preservation"/><meta content="c0b2d26abb1887943908a66a373b2b6070c46cfd12e238be891e09ea7394f616" name="source-sha256"/><style>
 /* ─────────────────────────────────────────────────────────────
@@ -2229,6 +2240,24 @@ main{display:block}
 </div>
 </div>
 </section>
+<!-- OVERSIGHT BAR -->
+<div class="wrap"><aside aria-label="Myndighetspunkter prosjektet hviler på" class="oversight-bar">
+<div class="oversight-item" data-status="bekreftet">
+<span class="dot"></span>
+<span class="label">Vedtak</span>
+<span class="value">Sauda kommunestyre · 17.06.2026</span>
+</div>
+<div class="oversight-item" data-status="anslag">
+<span class="dot"></span>
+<span class="label">Innsigelse</span>
+<span class="value">Statsforvalteren i Rogaland · BT2</span>
+</div>
+<div class="oversight-item" data-status="bekreftet">
+<span class="dot"></span>
+<span class="label">Sammenligningsgrunnlag</span>
+<span class="value">Statsforvalteren i Vestland · Odda 2025</span>
+</div>
+</aside></div>
 <!-- CTA -->
 <section class="cta" id="final-cta">
 <div class="wrap">
